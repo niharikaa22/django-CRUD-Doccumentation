@@ -29,13 +29,13 @@ Majority of applications on the internet are CRUD applications. For example – 
 Then enter the following command
 
                  django-admin startproject projectname
- <img src = "images/projectcreation.PNG">
+   <img src = "images/projectcreation.PNG">
 
 * After the creation of project enter into the directory where manage.py file is present.
 * Then for creating the app give the following command in command prompt,
             
                  python manage.py startapp appname
-  <img src = "images/appcreation.PNG">
+   <img src = "images/appcreation.PNG">
                  
    Now, all the required setups are complete. We can proceed further.
    
@@ -93,7 +93,7 @@ For this reason, Django provides a helper class which allows us to create a Form
           
                   admin.site.register(Register)
                
-<img src = "images/admin.PNG">
+   <img src = "images/admin.PNG">
 
 ### 5. Making View Functions for Django CRUD App :
 * The view functions are our actual CRUD operations in Django.The entire operation will be defined in this views.py.
@@ -266,7 +266,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 				path('delete/<int:id>',views.delete,name='delete'),
 
 				]
-<img src = "images/urls.PNG">
+   <img src = "images/urls.PNG">
 
 ### 8. Migrating the files with Django and running the server :
 * Till now we done all the required files and all ,now we have to migrate these files with the django server.for that we have to enter the followng command in command prompt,
@@ -285,21 +285,21 @@ For this reason, Django provides a helper class which allows us to create a Form
 
 #### Registration Page:
 * url link = http://127.0.0.1:8000/crud/register/
-<img src = "images/registeroutput.PNG">
+    <img src = "images/registeroutput.PNG">
 
 #### Updating Page:
-<img src = "images/editoutput.PNG">
+   <img src = "images/editoutput.PNG">
 
 #### Details page :
 * url link = http://127.0.0.1:8000/crud/details/
-<img src = "images/detailsoutput.PNG">
+   <img src = "images/detailsoutput.PNG">
 
 #### Delete page :
 * Confirmation page :
-<img src = "images/confirm.PNG">
+   <img src = "images/confirm.PNG">
 
 * After Deletion Details page :
-<img src = "images/deleteoutput.PNG">
+   <img src = "images/deleteoutput.PNG">
 			
 
 		  
