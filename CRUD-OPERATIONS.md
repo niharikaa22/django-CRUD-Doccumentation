@@ -70,7 +70,7 @@ Then enter the following command
               def __str__(self):
                   return self.field_name
        
-  <img src = "images/model.PNG">
+     <img src = "images/model.PNG">
   
  ### 3. Creating the Model Form:
  * Form is a python file.
