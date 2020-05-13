@@ -100,7 +100,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 ### 5. Making View Functions for Django CRUD App :
 * The view functions are our actual CRUD operations in Django.The entire operation will be defined in this views.py.
 * The view.py file consists of many functions depending upon our requirement.For our CRUD Operations we use 4 different functions likely for creation,getting the data,editing the stored data,and for deleting the data in database.
-<img src = "images.views.PNG">
+<img src = "images.view.PNG">
 
 * Till now we are done with the programming part of our CRUD operations.Next steps are to build our html pages for the final outcome in browser.
 
