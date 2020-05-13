@@ -102,6 +102,37 @@ For this reason, Django provides a helper class which allows us to create a Form
 * The view.py file consists of many functions depending upon our requirement.For our CRUD Operations we use 4 different functions likely for creation,getting the data,editing the stored data,and for deleting the data in database.
 <img src = "images.view.PNG">
 
+		from django.shortcuts import render,redirect
+		from django.http import HttpResponse
+		from crud.forms import registrationform
+		from crud.models import Register
+		def register(request):
+			if request.method=='POST':
+				form = registrationform(request.POST)
+				if form.is_valid():
+					form.save()
+					return redirect('/crud/register')
+			form = registrationform()
+			return render(request,'crud/register.html',{'form':form})
+		def details(request):
+			data = Register.objects.all()
+			return render(request,'crud/details.html',{'data':data})
+		def edit(request,id):
+			data = Register.objects.get(id=id)
+			if request.method =='POST':
+				form = registrationform(request.POST,instance=data)
+				if form.is_valid():
+					form.save()
+					return redirect('/crud/details')
+			form = registrationform(instance=data)
+			return render(request,'crud/edit.html',{'form':form,'data':data})
+		def delete(request,id):
+			ob = Register.objects.get(id=id)
+			if request.method == 'POST':
+				ob.delete()
+				return redirect('/crud/details')
+			return render(request,'crud/msg.html',{'info':ob})
+
 * Till now we are done with the programming part of our CRUD operations.Next steps are to build our html pages for the final outcome in browser.
 
 ### 6. Organising the Templates : 
@@ -112,23 +143,87 @@ For this reason, Django provides a helper class which allows us to create a Form
     ##### 1. Creation of Register.html file:
     * In this register.html we are doing "**create**" CRUD operation.
     * This html page is linked with the data in forms.py.
-    <img src = "images/register.PNG">
+
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Registration Form</title>
+			</head>
+			<body>
+					<form action="{% url 'register' %}" method="POST">
+						{% csrf_token %}
+						{{form.as_p}}
+					<input type="submit" name="submit" value="Save">
+					</form>
+
+			</body>
+			</html>
     
     ##### 2. Creation of Details.html file :
     * In this Details.html we are doing "**Read/retrive**" CRUD Operation.
     * This html page displays entries in  the table.
-    <img src = "images/details.png">
-   
+
+				<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Details Page</title>
+			</head>
+			<body >
+				<table border = 0.5>
+				{% for row in data%}
+				<tr>
+				<td>{{row.firstName}}</td>
+				<td><a href="{% url 'edit' row.id %}">{{row.lastName}}</a></td>
+				<td>{{row.emailId}}</td>
+				<td>{{row.Age}}</td>
+				<td><a href="{% url 'delete' row.id %}">Delete</a></td>
+				</tr>
+
+					{% endfor%}
+				</table>
+			</body>
+			</html>
+
+
+
+
    ##### 3. Creation of Edit.html file :
     * In this Edit.html we are doing "**Edit**" CRUD Operation.
     * This html page Edit the required entry in  the table.
-    <img src = "images/edit.png">
-    
+
+					<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Edit Page</title>
+			</head>
+			<body>
+				<form action="{% url 'edit' data.id %}" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit">update</button>
+					</form>
+			</body>
+			</html>
+			
+			
     ##### 4. Creation of Delete.html file:
     * In this Delete.html we are doing "**Delete**" CRUD Operation.
     * This html page deletes the required entry from the table.
-    <img src = "images/delete.PNG">
 
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Delete page</title>
+			</head>
+			<body>
+				<form action="{% url 'delete' info.id %}" method = "POST">
+					{% csrf_token %}
+					<h2>Are you sure to delete{{info.firstName}}</h2>
+					<input type="submit" name="submit"value='Delete'>
+					<a href = "{% url 'details' %}">cancel</a>
+					</form>
+			</body>
+			</html>
 
 ### 7. Adding urls to url path:
 * In the main url file we have to include our apps url file .For that we have to add the url.py file path
@@ -163,7 +258,6 @@ For this reason, Django provides a helper class which allows us to create a Form
                     python manage.py migrate
 		    python manage.py runserver
 
-<img src = "images/migrate.PNG">
 		    
 ### 9. Browsing our Websites using localhost :
 * After migrating the files,we have check our final outcome.
