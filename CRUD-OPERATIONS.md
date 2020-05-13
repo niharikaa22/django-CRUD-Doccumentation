@@ -54,8 +54,7 @@ Then enter the following command
            }
             }
               
-              
-<img src = "images/appinstallation.PNG">
+             
 
 ### 3. Creation of Model :
 * Model is the python file,it is used to create the table in table database as the fields in model.py.
@@ -87,7 +86,6 @@ For this reason, Django provides a helper class which allows us to create a Form
 		                model = model_class_name
 		                fields = '__all__'
                     
- <img src = "images/form.PNG">
  
  ### 4. Registering Model in Django Admin :
 * Here we are editing admin.py existing in crud folder. Import the model you want to register in the admin. In this case, it is a Register.
@@ -114,24 +112,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 					return redirect('/crud/register')
 			form = registrationform()
 			return render(request,'crud/register.html',{'form':form})
-		def details(request):
-			data = Register.objects.all()
-			return render(request,'crud/details.html',{'data':data})
-		def edit(request,id):
-			data = Register.objects.get(id=id)
-			if request.method =='POST':
-				form = registrationform(request.POST,instance=data)
-				if form.is_valid():
-					form.save()
-					return redirect('/crud/details')
-			form = registrationform(instance=data)
-			return render(request,'crud/edit.html',{'form':form,'data':data})
-		def delete(request,id):
-			ob = Register.objects.get(id=id)
-			if request.method == 'POST':
-				ob.delete()
-				return redirect('/crud/details')
-			return render(request,'crud/msg.html',{'info':ob})
+		
 
 * Till now we are done with the programming part of our CRUD operations.Next steps are to build our html pages for the final outcome in browser.
 
@@ -143,7 +124,7 @@ For this reason, Django provides a helper class which allows us to create a Form
     ##### 1. Creation of Register.html file:
     * In this register.html we are doing "**create**" CRUD operation.
     * This html page is linked with the data in forms.py.
-
+   
 			<!DOCTYPE html>
 			<html>
 			<head>
@@ -158,6 +139,18 @@ For this reason, Django provides a helper class which allows us to create a Form
 
 			</body>
 			</html>
+			
+     * In views.py we will add the following code to register the data.
+     		
+		def register(request):
+			if request.method=='POST':
+				form = registrationform(request.POST)
+				if form.is_valid():
+					form.save()
+					return redirect('/crud/register')
+			form = registrationform()
+			return render(request,'crud/register.html',{'form':form})
+			
     
     ##### 2. Creation of Details.html file :
     * In this Details.html we are doing "**Read/retrive**" CRUD Operation.
@@ -183,7 +176,12 @@ For this reason, Django provides a helper class which allows us to create a Form
 				</table>
 			</body>
 			</html>
-
+	
+	* In views.py we will add the following code to view all the entries.
+	 
+	 	def details(request):
+			data = Register.objects.all()
+			return render(request,'crud/details.html',{'data':data})
 
 
 
@@ -204,7 +202,17 @@ For this reason, Django provides a helper class which allows us to create a Form
 					</form>
 			</body>
 			</html>
+   * In views.py we will add the following code to edit the data.
 			
+			def edit(request,id):
+			data = Register.objects.get(id=id)
+			if request.method =='POST':
+				form = registrationform(request.POST,instance=data)
+				if form.is_valid():
+					form.save()
+					return redirect('/crud/details')
+			form = registrationform(instance=data)
+			return render(request,'crud/edit.html',{'form':form,'data':data})
 			
     ##### 4. Creation of Delete.html file:
     * In this Delete.html we are doing "**Delete**" CRUD Operation.
@@ -224,6 +232,15 @@ For this reason, Django provides a helper class which allows us to create a Form
 					</form>
 			</body>
 			</html>
+			
+    * In views.py we will add the following code to edit the data.
+    				
+			def delete(request,id):
+				ob = Register.objects.get(id=id)
+				if request.method == 'POST':
+					ob.delete()
+					return redirect('/crud/details')
+				return render(request,'crud/msg.html',{'info':ob})
 
 ### 7. Adding urls to url path:
 * In the main url file we have to include our apps url file .For that we have to add the url.py file path
