@@ -29,13 +29,13 @@ Majority of applications on the internet are CRUD applications. For example – 
 Then enter the following command
 
                  django-admin startproject projectname
- <img src = "images/projectcreation.png">
+ <img src = "images/projectcreation.PNG">
 
 * After the creation of project enter into the directory where manage.py file is present.
 * Then for creating the app give the following command in command prompt,
             
                  python manage.py startapp appname
-  <img src = "images/appcreation.png">
+  <img src = "images/appcreation.PNG">
                  
    Now, all the required setups are complete. We can proceed further.
    
@@ -55,7 +55,7 @@ Then enter the following command
             }
               
               
-<img src = "images/appinstallation.png">
+<img src = "images/appinstallation.PNG">
 
 ### 3. Creation of Model :
 * Model is the python file,it is used to create the table in table database as the fields in model.py.
@@ -71,7 +71,7 @@ Then enter the following command
               def __str__(self):
                   return self.field_name
        
-  <img src = "images/model.png">
+  <img src = "images/model.PNG">
   
  ### 3. Creating the Model Form:
  * Form is a python file.
@@ -87,7 +87,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 		                model = model_class_name
 		                fields = '__all__'
                     
- <img src = "images/form.png">
+ <img src = "images/form.PNG">
  
  ### 4. Registering Model in Django Admin :
 * Here we are editing admin.py existing in crud folder. Import the model you want to register in the admin. In this case, it is a Register.
@@ -100,7 +100,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 ### 5. Making View Functions for Django CRUD App :
 * The view functions are our actual CRUD operations in Django.The entire operation will be defined in this views.py.
 * The view.py file consists of many functions depending upon our requirement.For our CRUD Operations we use 4 different functions likely for creation,getting the data,editing the stored data,and for deleting the data in database.
-<img src = "images.view.png">
+<img src = "images.view.PNG">
 
 * Till now we are done with the programming part of our CRUD operations.Next steps are to build our html pages for the final outcome in browser.
 
@@ -112,7 +112,7 @@ For this reason, Django provides a helper class which allows us to create a Form
     ##### 1. Creation of Register.html file:
     * In this register.html we are doing "**create**" CRUD operation.
     * This html page is linked with the data in forms.py.
-    <img src = "images/register.png">
+    <img src = "images/register.PNG">
     
     ##### 2. Creation of Details.html file :
     * In this Details.html we are doing "**Read/retrive**" CRUD Operation.
