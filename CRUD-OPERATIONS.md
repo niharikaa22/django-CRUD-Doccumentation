@@ -177,7 +177,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 <img src = "images/registeroutput.PNG">
 
 #### Updating Page:
-<img src = "images/editimage.PNG">
+<img src = "images/editoutput.PNG">
 
 #### Details page :
 * url link = http://127.0.0.1:8000/crud/details/
