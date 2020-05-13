@@ -271,9 +271,9 @@ For this reason, Django provides a helper class which allows us to create a Form
 ### 8. Migrating the files with Django and running the server :
 * Till now we done all the required files and all ,now we have to migrate these files with the django server.for that we have to enter the followng command in command prompt,
 
-                    python manage.py makemigrations
-                    python manage.py migrate
-		    python manage.py runserver
+			    python manage.py makemigrations
+			    python manage.py migrate
+			    python manage.py runserver
 
 		    
 ### 9. Browsing our Websites using localhost :
@@ -286,14 +286,11 @@ For this reason, Django provides a helper class which allows us to create a Form
 #### Registration Page:
 * url link = http://127.0.0.1:8000/crud/register/
 <img src = "images/registeroutput.PNG">
-
 #### Updating Page:
 <img src = "images/editoutput.PNG">
-
 #### Details page :
 * url link = http://127.0.0.1:8000/crud/details/
 <img src = "images/detailsoutput.PNG">
-
 #### Delete page :
 * Confirmation page :
 <img src = "images/confirm.PNG">
