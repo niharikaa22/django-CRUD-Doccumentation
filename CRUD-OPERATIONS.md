@@ -129,12 +129,23 @@ For this reason, Django provides a helper class which allows us to create a Form
     * This html page deletes the required entry from the table.
     <img src = "images/delete.png">
 
-### 7. Migrating the files with Django :
+### 7. Migrating the files with Django and running the server :
 * Till now we done all the required files and all ,now we have to migrate these files with the django server.for that we have to enter the followng command in command prompt,
 
                     python manage.py makemigrations
                     python manage.py migrate
-                    
+		    python manage.py runserver
+		    
+		    
+### 8. Browsing our Websites using localhost :
+* After migrating the files,we have check our final outcome.
+* For that open the webbrowser and enter the localhost site and the url name.
+* syntax:
+			
+			http://127.0.0.1:8000/appname/urlname/
+			
+
+		  
           
     
 
