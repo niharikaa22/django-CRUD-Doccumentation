@@ -95,12 +95,12 @@ For this reason, Django provides a helper class which allows us to create a Form
           
                   admin.site.register(Register)
                
-<img src = "images/admin.png">
+<img src = "images/admin.PNG">
 
 ### 5. Making View Functions for Django CRUD App :
 * The view functions are our actual CRUD operations in Django.The entire operation will be defined in this views.py.
 * The view.py file consists of many functions depending upon our requirement.For our CRUD Operations we use 4 different functions likely for creation,getting the data,editing the stored data,and for deleting the data in database.
-<img src = "images.view.PNG">
+<img src = "images.views.PNG">
 
 * Till now we are done with the programming part of our CRUD operations.Next steps are to build our html pages for the final outcome in browser.
 
@@ -108,7 +108,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 * In this step we will create a folder named templates in the app folder.
 * Now in templates folder create another folder with the appname ,in that appname folder we will create all our html files.
 * In our CRUD operations we are using register.html,details.html,edit.html and msg.html files.
-*So,now we have to create the html files to complete our crud operations.
+* So,now we have to create the html files to complete our crud operations.
     ##### 1. Creation of Register.html file:
     * In this register.html we are doing "**create**" CRUD operation.
     * This html page is linked with the data in forms.py.
@@ -127,22 +127,68 @@ For this reason, Django provides a helper class which allows us to create a Form
     ##### 4. Creation of Delete.html file:
     * In this Delete.html we are doing "**Delete**" CRUD Operation.
     * This html page deletes the required entry from the table.
-    <img src = "images/delete.png">
+    <img src = "images/delete.PNG">
 
-### 7. Migrating the files with Django and running the server :
+
+### 7. Adding urls to url path:
+* In the main url file we have to include our apps url file .For that we have to add the url.py file path
+			
+			from django.contrib import admin
+			from django.urls import path,include
+			urlpatterns = [
+			    path('admin/', admin.site.urls),
+			    path('crud/',include('crud.urls')),
+
+				]
+<img src = "images/mainurls.PNG">
+				
+* Now in our app we have to create a urls.py file,and in that file we have to add the html files path.
+			
+			from django.contrib import admin
+			from django.urls import path
+			from crud import views
+			urlpatterns = [
+			    path('register/',views.register,name='register'),
+				path('details/',views.details,name='details'),
+				path('edit/<int:id>',views.edit,name='edit'),
+				path('delete/<int:id>',views.delete,name='delete'),
+
+				]
+<img src = "images/urls.PNG">
+
+### 8. Migrating the files with Django and running the server :
 * Till now we done all the required files and all ,now we have to migrate these files with the django server.for that we have to enter the followng command in command prompt,
 
                     python manage.py makemigrations
                     python manage.py migrate
 		    python manage.py runserver
+
+<img src = "images/migrate.PNG">
 		    
-		    
-### 8. Browsing our Websites using localhost :
+### 9. Browsing our Websites using localhost :
 * After migrating the files,we have check our final outcome.
 * For that open the webbrowser and enter the localhost site and the url name.
 * syntax:
 			
 			http://127.0.0.1:8000/appname/urlname/
+
+#### Registration Page:
+* url link = http://127.0.0.1:8000/crud/register/
+<img src = "images/registeroutput.PNG">
+
+#### Updating Page:
+<img src = "images/editimage.PNG">
+
+#### Details page :
+* url link = http://127.0.0.1:8000/crud/details/
+<img src = "images/detailsoutput.PNG">
+
+#### Delete page :
+* Confirmation page :
+<img src = "images/confirm.PNG">
+
+* After Deletion Details page :
+<img src = "images/deleteoutput.PNG">
 			
 
 		  
