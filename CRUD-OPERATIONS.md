@@ -252,7 +252,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 			    path('crud/',include('crud.urls')),
 
 				]
-<img src = "images/mainurls.PNG">
+    <img src = "images/mainurls.PNG">
 				
 * Now in our app we have to create a urls.py file,and in that file we have to add the html files path.
 			
