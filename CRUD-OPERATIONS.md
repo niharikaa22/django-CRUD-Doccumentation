@@ -298,7 +298,7 @@ For this reason, Django provides a helper class which allows us to create a Form
 * Confirmation page :
 <img src = "images/confirm.PNG">
 * After Deletion Details page :
- <img src = "images/deleteoutput.PNG">
+<img src = "images/deleteoutput.PNG">
 			
 
 		  
